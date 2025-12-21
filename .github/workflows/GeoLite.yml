@@ -17,6 +17,7 @@ jobs:
         mkdir -p download upload
         wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-ASN&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv -C download
         wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv -C download
+        wget -nv -O- "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=${{ secrets.LICENSE_KEY }}&suffix=tar.gz" | tar zxv -C download
         mv download/GeoLite*/*.mmdb upload
         rm -rf download
         echo "TAG_NAME=$(date +"%Y.%m.%d")" >> $GITHUB_ENV
